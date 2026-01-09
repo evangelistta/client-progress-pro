@@ -47,6 +47,74 @@ export type Database = {
         }
         Relationships: []
       }
+      anamnesis: {
+        Row: {
+          additional_notes: string | null
+          available_days: string[] | null
+          completed_at: string
+          created_at: string
+          eating_habits: string | null
+          health_conditions: string | null
+          id: string
+          injury_history: string | null
+          medications: string | null
+          objectives: string[] | null
+          physical_limitations: string | null
+          sleep_hours: number | null
+          sleep_quality: string | null
+          student_id: string
+          surgeries: string | null
+          training_frequency: number | null
+          updated_at: string
+        }
+        Insert: {
+          additional_notes?: string | null
+          available_days?: string[] | null
+          completed_at?: string
+          created_at?: string
+          eating_habits?: string | null
+          health_conditions?: string | null
+          id?: string
+          injury_history?: string | null
+          medications?: string | null
+          objectives?: string[] | null
+          physical_limitations?: string | null
+          sleep_hours?: number | null
+          sleep_quality?: string | null
+          student_id: string
+          surgeries?: string | null
+          training_frequency?: number | null
+          updated_at?: string
+        }
+        Update: {
+          additional_notes?: string | null
+          available_days?: string[] | null
+          completed_at?: string
+          created_at?: string
+          eating_habits?: string | null
+          health_conditions?: string | null
+          id?: string
+          injury_history?: string | null
+          medications?: string | null
+          objectives?: string[] | null
+          physical_limitations?: string | null
+          sleep_hours?: number | null
+          sleep_quality?: string | null
+          student_id?: string
+          surgeries?: string | null
+          training_frequency?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "anamnesis_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       diet_templates: {
         Row: {
           created_at: string
@@ -461,6 +529,7 @@ export type Database = {
           photo_url: string
           student_id: string
           taken_at: string
+          visible_to_trainer: boolean | null
         }
         Insert: {
           created_at?: string
@@ -470,6 +539,7 @@ export type Database = {
           photo_url: string
           student_id: string
           taken_at?: string
+          visible_to_trainer?: boolean | null
         }
         Update: {
           created_at?: string
@@ -479,6 +549,7 @@ export type Database = {
           photo_url?: string
           student_id?: string
           taken_at?: string
+          visible_to_trainer?: boolean | null
         }
         Relationships: [
           {
@@ -528,6 +599,7 @@ export type Database = {
       }
       students: {
         Row: {
+          anamnesis_completed: boolean | null
           avatar_url: string | null
           best_streak: number
           created_at: string
@@ -546,6 +618,7 @@ export type Database = {
           user_id: string | null
         }
         Insert: {
+          anamnesis_completed?: boolean | null
           avatar_url?: string | null
           best_streak?: number
           created_at?: string
@@ -564,6 +637,7 @@ export type Database = {
           user_id?: string | null
         }
         Update: {
+          anamnesis_completed?: boolean | null
           avatar_url?: string | null
           best_streak?: number
           created_at?: string
